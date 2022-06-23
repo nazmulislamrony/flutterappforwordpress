@@ -4,6 +4,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/services.dart';
+import 'package:flutterandroidappforwordpress/navdrawerwidget.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
@@ -11,8 +12,8 @@ import 'package:flutterandroidappforwordpress/helper/utils.dart';
 import 'package:flutterandroidappforwordpress/Provider/category_provider.dart';
 import 'package:flutterandroidappforwordpress/Provider/post_provider.dart';
 import 'package:flutterandroidappforwordpress/Screen/En_voltagelab/listcategory_page.dart';
-import 'package:flutterandroidappforwordpress/Screen/Voltage_Lab/latestpost_details.dart';
-import 'package:flutterandroidappforwordpress/Screen/Voltage_Lab/listcategory_page.dart';
+import 'package:flutterandroidappforwordpress/latestpost_details.dart';
+import 'package:flutterandroidappforwordpress/listcategory_page.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HomePage extends StatefulWidget {
@@ -26,12 +27,12 @@ class _HomePageState extends State<HomePage> {
   bool switchbtn = false;
   bool lock = true;
 
-  parmissionhandeler() async {
-    var status = await Permission.storage.status;
-    if (status.isDenied) {
-      await Permission.storage.request();
-    } else {}
-  }
+  // parmissionhandeler() async {
+  //   var status = await Permission.storage.status;
+  //   if (status.isDenied) {
+  //     await Permission.storage.request();
+  //   } else {}
+  // }
 
   Widget freegridviewtool({
     Icon? icon,
@@ -94,7 +95,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
-    parmissionhandeler();
+    // parmissionhandeler();
     Provider.of<Postprovider>(context, listen: false).getvoltagelablatestpost();
     Provider.of<CategoryProvider>(context, listen: false)
         .get_bn_vl_free_category();
@@ -105,12 +106,14 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     final post = Provider.of<Postprovider>(context);
     return Scaffold(
+      drawer: const NavigationDrawerWidget(),
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
             elevation: 0,
             pinned: true,
             backgroundColor: Colors.white,
+            iconTheme: const IconThemeData(color: Colors.black),
             title: Text(
               "Hi",
               style: Utils.entitleName,
@@ -238,7 +241,6 @@ class _HomePageState extends State<HomePage> {
                             ));
                       },
                     ),
-
                   ],
                 ),
               ),

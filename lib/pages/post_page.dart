@@ -63,7 +63,7 @@ class _PostPageState extends State<PostPage> {
         iconTheme: const IconThemeData(color: Colors.black),
         title: Text(
           widget.categoryname,
-          style: Utils.bnPostListAppbarText,
+          style: Utils.enPostListAppbarText,
         ),
       ),
       body: post.isloading
@@ -88,24 +88,6 @@ class _PostPageState extends State<PostPage> {
                         return const Center(
                           child: CircularProgressIndicator(),
                         );
-                        // return Column(
-                        //   children: [
-                        //     SizedBox(
-                        //       height: 30,
-                        //       width: 50,
-                        //       child: LoadingIndicator(
-                        //         indicatorType: Indicator.lineScalePulseOutRapid,
-                        //         colors: const [
-                        //           Colors.red,
-                        //           Colors.deepOrange,
-                        //           Colors.yellowAccent,
-                        //           Colors.green,
-                        //           Colors.indigo
-                        //         ],
-                        //       ),
-                        //     ),
-                        //   ],
-                        // );
                       }
                     }
                     return Card(
@@ -155,16 +137,6 @@ class _PostPageState extends State<PostPage> {
                                           memCacheHeight: 200,
                                           maxHeightDiskCache: 200,
                                           fit: BoxFit.cover,
-                                          // frameBuilder:
-                                          //     (context, child, frame, wasSynchronouslyLoaded) {
-                                          //   if (wasSynchronouslyLoaded) return child;
-                                          //   return AnimatedOpacity(
-                                          //     opacity: frame == null ? 0 : 1,
-                                          //     duration: Duration(milliseconds: 400),
-                                          //     curve: Curves.easeOut,
-                                          //     child: child,
-                                          //   );
-                                          // },
                                         ),
                                       ),
                                     ),
@@ -180,10 +152,7 @@ class _PostPageState extends State<PostPage> {
                                               post.postdata[index].title!
                                                   .rendered,
                                               softWrap: true,
-                                              // style: const TextStyle(
-                                              //     fontWeight: FontWeight.bold,
-                                              //     fontSize: 16),
-                                              style: Utils.bnListTitleText,
+                                              style: Utils.enListTitleText,
                                             ),
                                           ),
                                           Container(
@@ -214,11 +183,3 @@ class _PostPageState extends State<PostPage> {
     );
   }
 }
-
-
-
-
-//  if (index == post.postdata.length - 1) {
-//                       if (post.postdata.length == previewpostlength) {
-//                         return Container();
-//                       } else if (post.postdata.length != previewpostlength) {

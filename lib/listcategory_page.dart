@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutterandroidappforwordpress/navdrawerwidget.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
@@ -38,6 +39,7 @@ class _ListcategoryPageState extends State<ListcategoryPage> {
     final category = Provider.of<CategoryProvider>(context);
     final post = Provider.of<Postprovider>(context);
     return Scaffold(
+      drawer: const NavigationDrawerWidget(),
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
@@ -45,8 +47,8 @@ class _ListcategoryPageState extends State<ListcategoryPage> {
             centerTitle: true,
             backgroundColor: Colors.indigoAccent,
             title: Text(
-              "বিভাগ সমূহ",
-              style: Utils.bnCategorytitleOfAppbar,
+              Utils.categorylist,
+              style: Utils.enCategorytitleOfAppbar,
             ),
           ),
           SliverToBoxAdapter(
@@ -119,8 +121,8 @@ class _ListcategoryPageState extends State<ListcategoryPage> {
                                       BorderRadius.all(Radius.circular(50)),
                                   borderSide: BorderSide(
                                       width: 0, color: Colors.transparent)),
-                              hintText: "যে কোন টপিক খুঁজুন",
-                              hintStyle: Utils.bncategorySearchhintText,
+                              hintText: "Search any topic",
+                              hintStyle: Utils.encategorySearchhintText,
                             ),
                           ),
                         ),
@@ -190,7 +192,7 @@ class _ListcategoryPageState extends State<ListcategoryPage> {
                             Text(
                               category.category[index].name!,
                               overflow: TextOverflow.ellipsis,
-                              style: Utils.bnListTitleCategory,
+                              style: Utils.enListTitleCategory,
                             ),
                           ),
                         ],

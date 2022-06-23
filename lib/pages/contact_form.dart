@@ -177,17 +177,7 @@ class _ContactFormState extends State<ContactForm> {
                 ),
               ),
             )
-            // Container(
-            //   child: Container(
-            //     margin: EdgeInsets.only(top: 10),
-            //     width: double.infinity,
-            //     alignment: Alignment.center,
-            //     child: Text(
-            //       "Or Whatsapp Live Chat!!!",
-            //       style: Global.encategoryTitleText,
-            //     ),
-            //   ),
-            // )
+
           ],
         ),
       ),
@@ -239,13 +229,7 @@ Future _openMailLauncher(
 openwhatsapp() async{
   var whatsapp ="+8801713509349";
   var whatsappURl_android = "whatsapp://send?phone="+whatsapp+"&text=[From: VoltageLab App]\n\n";
-
-    // android , web
-    // if( await canLaunch(whatsappURl_android)){
       await launch(whatsappURl_android);
-    // }else{
-    //
-    // }
 
 }
 

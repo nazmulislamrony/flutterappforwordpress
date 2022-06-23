@@ -1,6 +1,5 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:flutterandroidappforwordpress/Provider/youtube_api_provider.dart';
 import 'package:flutterandroidappforwordpress/Screen/Youtube/youtube_player.dart';
@@ -27,17 +26,6 @@ class _PlaylistIteamPageState extends State<PlaylistIteamPage> {
     super.initState();
     Provider.of<YoutubeApiprovider>(context, listen: false)
         .playlistiteam(widget.playlistid, widget.maxresult);
-
-    // _controller!.onEnterFullscreen = () {
-    //   SystemChrome.setPreferredOrientations([
-    //     DeviceOrientation.landscapeLeft,
-    //     DeviceOrientation.landscapeRight,
-    //   ]);
-    //   log('Entered Fullscreen');
-    // };
-    // _controller!.onExitFullscreen = () {
-    //   log('Exited Fullscreen');
-    // };
   }
 
   @override
@@ -77,7 +65,7 @@ class _PlaylistIteamPageState extends State<PlaylistIteamPage> {
                       )),
                   Text(
                     widget.playlistname,
-                    style: Utils.bnCategorytitleOfAppbar,
+                    style: Utils.enCategorytitleOfAppbar,
                   ),
                 ],
               ),
@@ -141,55 +129,3 @@ class _PlaylistIteamPageState extends State<PlaylistIteamPage> {
     );
   }
 }
-
-
-
-
-// Flexible(
-//                         child: SingleChildScrollView(
-//                           child: ListView.builder(
-//                             physics: NeverScrollableScrollPhysics(),
-//                             shrinkWrap: true,
-//                             itemCount:
-//                                 youtube.youtubePlaylistiteam!.items.length,
-//                             itemBuilder: (context, index) {
-//                               var iteamdata =
-//                                   youtube.youtubePlaylistiteam!.items[index];
-//                               return Container(
-//                                 margin: const EdgeInsets.only(
-//                                     left: 10, right: 10, top: 10, bottom: 5),
-//                                 decoration:
-//                                     const BoxDecoration(color: Colors.white),
-//                                 child: Material(
-//                                   color: Colors.transparent,
-//                                   child: InkWell(
-//                                     onTap: () {
-//                                       setState(() {
-//                                         youtubePlayerController!.load(iteamdata
-//                                             .snippet.resourceId.videoId);
-//                                       });
-//                                     },
-//                                     child: Container(
-//                                       padding: const EdgeInsets.all(15),
-//                                       child: Row(
-//                                         mainAxisAlignment:
-//                                             MainAxisAlignment.spaceBetween,
-//                                         children: [
-//                                           Flexible(
-//                                               child: Text(
-//                                                   iteamdata.snippet.title)),
-//                                           Icon(
-//                                             Icons.check_circle,
-//                                             color: Colors.grey[400],
-//                                             size: 17,
-//                                           )
-//                                         ],
-//                                       ),
-//                                     ),
-//                                   ),
-//                                 ),
-//                               );
-//                             },
-//                           ),
-//                         ),
-//                       )

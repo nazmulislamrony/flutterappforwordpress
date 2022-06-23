@@ -35,31 +35,6 @@ class PostDetailsPage extends StatefulWidget {
 }
 
 class _PostDetailsPageState extends State<PostDetailsPage> {
-  bool bookmark = false;
-  bool isloading = false;
-
-  int voltagelabsavepostcount = 0;
-
-
-
-
-  void postshare(BuildContext context, String link) async {
-    final String text = link;
-    final RenderBox box = context.findRenderObject() as RenderBox;
-    await Share.share(text,
-        subject: "Voltage Lab",
-        sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size);
-  }
-
-  launchURL(String _url) async {
-    await canLaunch(_url) ? await launch(_url) : throw 'Could not launch $_url';
-  }
-
-
-
-
-
-
 
   @override
   void initState() {
@@ -82,41 +57,10 @@ class _PostDetailsPageState extends State<PostDetailsPage> {
             ),
             leading: IconButton(
                 onPressed: () {
-                  post.getpostcount();
-                  post.get_en_voltagelabpostcount();
                   Navigator.pop(context);
                 },
                 icon: const Icon(Icons.arrow_back)),
             actions: [
-              // widget.sitename == 'polytechnicbd'
-              //     ? IconButton(
-              //         onPressed: () {
-              //           if (post.isloading == true) {
-              //             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-              //               content: Text("Please Wait For Content Loading",
-              //                   style: GoogleFonts.lato()),
-              //             ));
-              //           }
-              //         },
-              //         icon: Icon(post.en_voltagelabsavepost.any(
-              //                 (element) => element.postid == widget.postdata.id)
-              //             ? Icons.bookmark
-              //             : Icons.bookmark_border))
-              //     : IconButton(
-              //         onPressed: () {
-              //           if (post.isloading == true) {
-              //             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-              //                 content: Text(
-              //               "Please Wait For Content Loading",
-              //               style: GoogleFonts.lato(),
-              //             )));
-              //           }
-              //         },
-              //         icon: Icon(post.savevoltagelabpost.any(
-              //                 (element) => element.postid == widget.postdata.id)
-              //             ? Icons.bookmark
-              //             : Icons.bookmark_border))
-
               IconButton(
                   onPressed: () {
                     postshare(context, post.postDetails!.link);
@@ -137,7 +81,6 @@ class _PostDetailsPageState extends State<PostDetailsPage> {
               ),
             ),
           ),
-
           SliverToBoxAdapter(
             child: Container(
               margin: const EdgeInsets.all(10),
@@ -147,10 +90,7 @@ class _PostDetailsPageState extends State<PostDetailsPage> {
                   Flexible(
                     child: Text(
                       widget.postdata.title!.rendered,
-                      style: const TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 22,
-                          fontFamily: 'SolaimanLipi'),
+                      style: Utils.titleOfList,
                     ),
                   ),
                 ],
@@ -188,8 +128,6 @@ class _PostDetailsPageState extends State<PostDetailsPage> {
                         CachedNetworkImage(imageUrl: url!);
                       },
                       style: {
-                        // "p": Style(fontSize: FontSize(textsize.textsize), fontFamily: 'SolaimanLipi', letterSpacing: 1.0),
-
                         "p": Style(
                             fontSize: FontSize(18),
                             fontFamily: 'Lato-Regular',
@@ -221,4 +159,13 @@ class _PostDetailsPageState extends State<PostDetailsPage> {
       ),
     );
   }
+
+  void postshare(BuildContext context, String link) async {
+    final String text = link;
+    final RenderBox box = context.findRenderObject() as RenderBox;
+    await Share.share(text,
+        subject: "Voltage Lab",
+        sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size);
+  }
+
 }

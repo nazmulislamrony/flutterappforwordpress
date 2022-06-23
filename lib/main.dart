@@ -15,6 +15,7 @@ import 'Provider/post_provider.dart';
 import 'Provider/webview_provider.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'Provider/youtube_api_provider.dart';
+import 'SplashScreen.dart';
 
 Future<void> main() async {
   configLoading();
@@ -67,7 +68,7 @@ class MyApp extends StatelessWidget {
       // theme: ThemeData(brightness: Brightness.light),
       theme: darktheme.themeData,
       debugShowCheckedModeBanner: false,
-      home: const HomePage(),
+      home: SplashScreen(),
       builder: EasyLoading.init(),
     );
   }

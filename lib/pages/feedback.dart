@@ -2,11 +2,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:flutterandroidappforwordpress/helper/utils.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mailer/mailer.dart';
 import 'package:mailer/smtp_server.dart';
-import 'package:flutterandroidappforwordpress/helper/utils.dart';
 
 class FeedBackPage extends StatefulWidget {
   const FeedBackPage({Key? key}) : super(key: key);
@@ -177,3 +177,4 @@ class _FeedBackPageState extends State<FeedBackPage> {
     );
   }
 }
+
