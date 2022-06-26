@@ -63,7 +63,7 @@ class _PostPageState extends State<PostPage> {
         iconTheme: const IconThemeData(color: Colors.black),
         title: Text(
           widget.categoryname,
-          style: Utils.enPostListAppbarText,
+          style: Utils.postListAppbarText,
         ),
       ),
       body: post.isloading
@@ -152,7 +152,7 @@ class _PostPageState extends State<PostPage> {
                                               post.postdata[index].title!
                                                   .rendered,
                                               softWrap: true,
-                                              style: Utils.enListTitleText,
+                                              style: Utils.listTitleText,
                                             ),
                                           ),
                                           Container(

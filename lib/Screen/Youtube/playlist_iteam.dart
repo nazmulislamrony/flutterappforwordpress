@@ -65,7 +65,7 @@ class _PlaylistIteamPageState extends State<PlaylistIteamPage> {
                       )),
                   Text(
                     widget.playlistname,
-                    style: Utils.enCategorytitleOfAppbar,
+                    style: Utils.categorytitleOfAppbar,
                   ),
                 ],
               ),

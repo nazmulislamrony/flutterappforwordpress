@@ -48,7 +48,7 @@ class _ListcategoryPageState extends State<ListcategoryPage> {
             backgroundColor: Colors.indigoAccent,
             title: Text(
               Utils.categorylist,
-              style: Utils.enCategorytitleOfAppbar,
+              style: Utils.categorytitleOfAppbar,
             ),
           ),
           SliverToBoxAdapter(
@@ -122,7 +122,7 @@ class _ListcategoryPageState extends State<ListcategoryPage> {
                                   borderSide: BorderSide(
                                       width: 0, color: Colors.transparent)),
                               hintText: "Search any topic",
-                              hintStyle: Utils.encategorySearchhintText,
+                              hintStyle: Utils.categorySearchhintText,
                             ),
                           ),
                         ),
@@ -192,7 +192,7 @@ class _ListcategoryPageState extends State<ListcategoryPage> {
                             Text(
                               category.category[index].name!,
                               overflow: TextOverflow.ellipsis,
-                              style: Utils.enListTitleCategory,
+                              style: Utils.listTitleCategory,
                             ),
                           ),
                         ],

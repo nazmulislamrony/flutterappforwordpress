@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -13,11 +12,9 @@ class ContactForm extends StatefulWidget {
 }
 
 class _ContactFormState extends State<ContactForm> {
-  // final controllerTo = TextEditingController();
   final controllerSubject = TextEditingController();
   final controllerMessage = TextEditingController();
 
-  bool _validateTo = false;
   bool _validateSubject = false;
   bool _validateMessage = false;
 
@@ -28,27 +25,21 @@ class _ContactFormState extends State<ContactForm> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        title: (Text("Contact Us", style: Utils.entitleName)),
+        title: (Text("Contact Us", style: Utils.titleName)),
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.only(left: 25, right: 25),
+        padding: const EdgeInsets.only(left: 25, right: 25),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Container(
-              margin: EdgeInsets.only(top: 5),
+              margin: const EdgeInsets.only(top: 5),
               alignment: Alignment.center,
               child: Text(
                 "Contact in Mail",
-                style: Utils.encategoryTitleText,
+                style: Utils.categoryTitleText,
               ),
             ),
-            // buildTextField(
-            //     title: 'To',
-            //     controller: controllerTo,
-            //     validateTxt: _validateTo,
-            //     maxLine: 1),
-
             const SizedBox(
               height: 10.0,
             ),
@@ -57,7 +48,7 @@ class _ContactFormState extends State<ContactForm> {
                 controller: controllerSubject,
                 validateTxt: _validateSubject,
                 maxLine: 1),
-            SizedBox(
+            const SizedBox(
               height: 15.0,
             ),
             buildTextField(
@@ -65,7 +56,7 @@ class _ContactFormState extends State<ContactForm> {
                 controller: controllerMessage,
                 validateTxt: _validateMessage,
                 maxLine: 3),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             ElevatedButton(
@@ -91,6 +82,7 @@ class _ContactFormState extends State<ContactForm> {
                   }
                 });
               },
+              style: ElevatedButton.styleFrom(primary: Colors.white),
               child: Text(
                 "Send",
                 style: GoogleFonts.lato(
@@ -98,12 +90,10 @@ class _ContactFormState extends State<ContactForm> {
                     fontSize: 16,
                     fontWeight: FontWeight.bold),
               ),
-              style: ElevatedButton.styleFrom(primary: Colors.white),
             ),
             const SizedBox(
               height: 10,
             ),
-
             Align(
                 alignment: Alignment.center,
                 child: Row(
@@ -134,11 +124,11 @@ class _ContactFormState extends State<ContactForm> {
                         alignment: Alignment.center,
                         child: Text(
                           "Or Whatsapp Live Chat!!!",
-                          style: Utils.encategoryTitleText,
+                          style: Utils.categoryTitleText,
                         ))),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Container(
@@ -159,11 +149,11 @@ class _ContactFormState extends State<ContactForm> {
                     // mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Icon(
+                      const Icon(
                         Icons.chat_bubble_outlined,
                         color: Color.fromRGBO(7, 94, 84, 5),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 10,
                       ),
                       Text("Live Chat",
@@ -177,7 +167,6 @@ class _ContactFormState extends State<ContactForm> {
                 ),
               ),
             )
-
           ],
         ),
       ),
@@ -197,7 +186,7 @@ class _ContactFormState extends State<ContactForm> {
               color: Colors.black,
               fontSize: 16,
             )),
-        SizedBox(
+        const SizedBox(
           height: 10,
         ),
         TextField(
@@ -218,18 +207,13 @@ Future _openMailLauncher(
     required String message}) async {
   final url =
       'mailto: $toEmil?subject=${Uri.encodeFull(toSubject)}&body=${Uri.encodeFull(message)}';
-  launch(url);
-  // if (await canLaunch(url)) {
-  //   print("2 buttonclick");
-
-  //   await launch(url);
-  // }
+  canLaunchUrl(Uri.parse(url));
 }
 
-openwhatsapp() async{
-  var whatsapp ="+8801713509349";
-  var whatsappURl_android = "whatsapp://send?phone="+whatsapp+"&text=[From: VoltageLab App]\n\n";
-      await launch(whatsappURl_android);
-
+openwhatsapp() async {
+  var whatsapp = Utils.contactNumber;
+  var whatsappURlAndroid = "whatsapp://send?phone=" +
+      whatsapp +
+      "&text=[From: ${Utils.fromWhere}]\n\n";
+  await canLaunchUrl(Uri.parse(whatsappURlAndroid));
 }
-

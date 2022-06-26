@@ -109,7 +109,7 @@ class _FeedBackPageState extends State<FeedBackPage> {
         ),
         title: Text(
           "FeedBack",
-          style: Utils.enPostListAppbarText,
+          style: Utils.postListAppbarText,
         ),
       ),
       body: Container(
@@ -156,7 +156,7 @@ class _FeedBackPageState extends State<FeedBackPage> {
                   },
                   decoration: InputDecoration(
                       hintText: "Tell us your opinion",
-                      hintStyle: Utils.encategorySearchhintText),
+                      hintStyle: Utils.categorySearchhintText),
                 ),
               ),
             ),

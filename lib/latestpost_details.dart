@@ -93,7 +93,7 @@ class _LatestPostDetailsState extends State<LatestPostDetails> {
                   Flexible(
                     child: Text(
                       widget.latestposttitle,
-                      style:   Utils.enPostListAppbarText),
+                      style:   Utils.postListAppbarText),
                   ),
                 ],
               ),

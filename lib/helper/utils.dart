@@ -4,6 +4,9 @@ import 'package:google_fonts/google_fonts.dart';
 class Utils {
 
   // link and string globally
+
+  static const contactNumber = "+1";
+  static const fromWhere = "VoltageLab";
   static const appame = "WordPress for Flutter";
   static const categoryicon = "images/category_icon.png";
   static const categorylist = "Category List";
@@ -19,13 +22,13 @@ class Utils {
   static TextStyle titleOfList = GoogleFonts.hindSiliguri(
       color: Colors.black, fontWeight: FontWeight.w600);
 
-  static TextStyle enCategorytitleOfAppbar = GoogleFonts.lato(
+  static TextStyle categorytitleOfAppbar = GoogleFonts.lato(
       color: Colors.white, fontSize: 18.0, fontWeight: FontWeight.w600);
 
   static TextStyle titleCarosal = GoogleFonts.hindSiliguri(
       color: Colors.black, fontSize: 16.0, fontWeight: FontWeight.w500);
 
-  static TextStyle entitleName = GoogleFonts.lato(
+  static TextStyle titleName = GoogleFonts.lato(
       color: Colors.black, fontSize: 20.0, fontWeight: FontWeight.bold);
 
   static var bottomSelectedNavText = GoogleFonts.hindSiliguri(
@@ -44,26 +47,26 @@ class Utils {
       color: Colors.black45, fontSize: 12.0, fontWeight: FontWeight.normal);
 
 
-  static TextStyle encategorySearchhintText = GoogleFonts.lato(
+  static TextStyle categorySearchhintText = GoogleFonts.lato(
       color: Colors.black45, fontSize: 16.0, fontWeight: FontWeight.normal);
 
 
-  static TextStyle enListTitleCategory = GoogleFonts.lato(
+  static TextStyle listTitleCategory = GoogleFonts.lato(
       color: Colors.black, fontSize: 14.0, fontWeight: FontWeight.normal);
 
   static TextStyle entitleCarosal = GoogleFonts.lato(
       color: Colors.black, fontSize: 16.0, fontWeight: FontWeight.w500);
 
-  static TextStyle enListTitleText = GoogleFonts.lato(
+  static TextStyle listTitleText = GoogleFonts.lato(
       color: Colors.black, fontSize: 16.0, fontWeight: FontWeight.w600);
 
-  static TextStyle encategoryTitleText = GoogleFonts.lato(
+  static TextStyle categoryTitleText = GoogleFonts.lato(
       color: Colors.black, fontSize: 18.0, fontWeight: FontWeight.w600);
 
-  static TextStyle enAlertText = GoogleFonts.lato(
+  static TextStyle alertText = GoogleFonts.lato(
       color: Colors.black, fontSize: 12, fontWeight: FontWeight.normal);
 
-  static TextStyle enPostListAppbarText = GoogleFonts.hindSiliguri(
+  static TextStyle postListAppbarText = GoogleFonts.hindSiliguri(
       color: Colors.black, fontSize: 18.0, fontWeight: FontWeight.w500);
 
   static Color defaultColor = Color.fromRGBO(0, 116, 255, 1);

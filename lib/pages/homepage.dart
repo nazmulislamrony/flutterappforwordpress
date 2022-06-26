@@ -116,7 +116,7 @@ class _HomePageState extends State<HomePage> {
             iconTheme: const IconThemeData(color: Colors.black),
             title: Text(
               "Hi",
-              style: Utils.entitleName,
+              style: Utils.titleName,
             ),
             actions: [
               IconButton(

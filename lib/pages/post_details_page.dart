@@ -53,7 +53,7 @@ class _PostDetailsPageState extends State<PostDetailsPage> {
             iconTheme: const IconThemeData(color: Colors.black),
             title: Text(
               widget.postdata.title!.rendered,
-              style: Utils.enPostListAppbarText,
+              style: Utils.postListAppbarText,
             ),
             leading: IconButton(
                 onPressed: () {

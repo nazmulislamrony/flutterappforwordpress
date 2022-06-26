@@ -50,7 +50,7 @@ class _En_voltagelabListcategoryPageState
             backgroundColor: Colors.indigoAccent,
             title: Text(
               "Subject List",
-              style: Utils.enCategorytitleOfAppbar,
+              style: Utils.categorytitleOfAppbar,
             ),
             actions: [
               // IconButton(
@@ -142,7 +142,7 @@ class _En_voltagelabListcategoryPageState
                                   borderSide: BorderSide(
                                       width: 0, color: Colors.transparent)),
                               hintText: "Search any topic from here",
-                              hintStyle: Utils.encategorySearchhintText,
+                              hintStyle: Utils.categorySearchhintText,
                             ),
                           ),
                         ),
@@ -226,7 +226,7 @@ class _En_voltagelabListcategoryPageState
                             child: Text(
                               category.en_voltagelabcategorylist[index].name,
                               overflow: TextOverflow.ellipsis,
-                              style: Utils.enListTitleText,
+                              style: Utils.listTitleText,
                             ),
                           ),
                         ],

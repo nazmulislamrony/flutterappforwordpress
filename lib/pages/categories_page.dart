@@ -45,7 +45,7 @@ class _CategoryPageState extends State<CategoryPage> {
               iconTheme: const IconThemeData(color: Colors.black),
               title: Text(
                 widget.categoryname,
-                style: Utils.enPostListAppbarText,
+                style: Utils.postListAppbarText,
               ),
             ),
             body: category.loading
@@ -101,7 +101,7 @@ class _CategoryPageState extends State<CategoryPage> {
                                 child: Text(
                                   category.subcategory![index].name!,
                                   textAlign: TextAlign.center,
-                                  style: Utils.enListTitleCategory,
+                                  style: Utils.listTitleCategory,
                                   // maxLines: 1,
                                   // overflow: TextOverflow.ellipsis,
                                 ),

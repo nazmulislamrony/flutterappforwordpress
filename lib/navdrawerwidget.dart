@@ -135,7 +135,7 @@ class NavigationDrawerWidget extends StatelessWidget {
         fbOpen();
         break;
       case 3:
-        _launchURL(Utils.playstoreUrl);
+        _launchURL(Utils.playtoreUrl);
         break;
       case 4:
         final snackBar = SnackBar(content: Text("$i"));
@@ -145,7 +145,7 @@ class NavigationDrawerWidget extends StatelessWidget {
         ));
         break;
       case 5:
-        Share.share(Utils.playstoreUrl, subject: Utils.appame);
+        Share.share(Utils.playtoreUrl, subject: Utils.appame);
         break;
       case 6:
         final snackBar = SnackBar(content: Text("$i"));
@@ -224,6 +224,7 @@ class NavigationDrawerWidget extends StatelessWidget {
   }
 
   _launchURL(String url) async {
+
     Uri urlLink = Uri.parse(url);
     if (await launchUrl(urlLink)) {
       await launchUrl(urlLink);
