@@ -1,19 +1,15 @@
 import 'dart:io';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterandroidappforwordpress/drawerhelper.dart';
 import 'package:flutterandroidappforwordpress/listcategory_page.dart';
 import 'package:flutterandroidappforwordpress/pages/contact_form.dart';
 import 'package:flutterandroidappforwordpress/pages/feedback.dart';
-import 'package:flutterandroidappforwordpress/pages/homepage.dart';
 import 'package:flutterandroidappforwordpress/web_View/web_view.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:webview_flutter/webview_flutter.dart';
-
-import 'helper/utils.dart';
+import 'utils/utils.dart';
 
 class NavigationDrawerWidget extends StatelessWidget {
   const NavigationDrawerWidget({Key? key}) : super(key: key);
@@ -148,8 +144,6 @@ class NavigationDrawerWidget extends StatelessWidget {
         Share.share(Utils.playtoreUrl, subject: Utils.appame);
         break;
       case 6:
-        final snackBar = SnackBar(content: Text("$i"));
-        ScaffoldMessenger.of(context).showSnackBar(snackBar);
         Navigator.of(context)
             .push(MaterialPageRoute(builder: (context) => const FeedBackPage()));
         break;
@@ -213,7 +207,7 @@ class NavigationDrawerWidget extends StatelessWidget {
     Uri fallbackUrl = Uri.parse(Utils.fbFallBackUrl);
 
     try {
-      bool launched = await launchUrl(fbProtocolUrl);
+      bool launched = await canLaunchUrl(fbProtocolUrl);
 
       if (!launched) {
         await launchUrl(fallbackUrl);

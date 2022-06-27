@@ -6,15 +6,14 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
-import 'package:flutterandroidappforwordpress/provider/connectivity_provider.dart';
 import 'package:flutterandroidappforwordpress/provider/otherprovider.dart';
 import 'package:flutterandroidappforwordpress/pages/homepage.dart';
-import 'Provider/category_provider.dart';
+import 'provider/category_provider.dart';
 
-import 'Provider/post_provider.dart';
-import 'Provider/webview_provider.dart';
+import 'provider/post_provider.dart';
+import 'provider/webview_provider.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'Provider/youtube_api_provider.dart';
+import 'provider/youtube_api_provider.dart';
 import 'SplashScreen.dart';
 
 Future<void> main() async {
@@ -31,9 +30,6 @@ Future<void> main() async {
       ChangeNotifierProvider(create: (context) => Webcontroll()),
       ChangeNotifierProvider(create: (context) => YoutubeApiprovider()),
       ChangeNotifierProvider(create: (context) => Otherprovider()),
-      ChangeNotifierProvider(
-        create: (context) => ConnectivityProvider(),
-      )
     ],
     child: MyApp(),
   ));

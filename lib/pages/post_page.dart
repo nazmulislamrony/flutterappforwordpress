@@ -5,19 +5,17 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lazy_load_scrollview/lazy_load_scrollview.dart';
 import 'package:provider/provider.dart';
-import 'package:flutterandroidappforwordpress/Provider/post_provider.dart';
-import 'package:flutterandroidappforwordpress/helper/utils.dart';
+import 'package:flutterandroidappforwordpress/provider/post_provider.dart';
+import 'package:flutterandroidappforwordpress/utils/utils.dart';
 import 'package:flutterandroidappforwordpress/pages/post_details_page.dart';
 
 class PostPage extends StatefulWidget {
   final int categoryid;
   final String categoryname;
-  final String sitename;
   const PostPage({
     Key? key,
     required this.categoryid,
     required this.categoryname,
-    required this.sitename,
   }) : super(key: key);
 
   @override
@@ -34,7 +32,7 @@ class _PostPageState extends State<PostPage> {
   Future loadmorepost() async {
     perpagepost = perpagepost + 10;
     Provider.of<Postprovider>(context, listen: false)
-        .getpost(widget.categoryid, perpagepost, widget.sitename);
+        .getpost(widget.categoryid, perpagepost);
     previewpostlength =
         Provider.of<Postprovider>(context, listen: false).postdata.length;
   }
@@ -42,7 +40,7 @@ class _PostPageState extends State<PostPage> {
   @override
   void initState() {
     Provider.of<Postprovider>(context, listen: false)
-        .getpost(widget.categoryid, perpagepost, widget.sitename);
+        .getpost(widget.categoryid, perpagepost);
     scrollController = ScrollController();
     super.initState();
   }
@@ -99,12 +97,11 @@ class _PostPageState extends State<PostPage> {
                           print(post.postdata[index].id);
                           Provider.of<Postprovider>(context, listen: false)
                               .getpostdetails(
-                                  post.postdata[index].id!, widget.sitename);
+                                  post.postdata[index].id!);
                           Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder: (context) => PostDetailsPage(
-                                sitename: widget.sitename,
                                 postdata: post.postdata[index],
                                 categoryid: widget.categoryid,
                                 categoryname: widget.categoryname,

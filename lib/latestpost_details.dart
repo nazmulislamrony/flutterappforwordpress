@@ -4,8 +4,8 @@ import 'package:flutter_html/flutter_html.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:share/share.dart';
-import 'package:flutterandroidappforwordpress/Provider/post_provider.dart';
-import 'package:flutterandroidappforwordpress/helper/utils.dart';
+import 'package:flutterandroidappforwordpress/provider/post_provider.dart';
+import 'package:flutterandroidappforwordpress/utils/utils.dart';
 import 'package:flutterandroidappforwordpress/web_View/web_view.dart';
 
 class LatestPostDetails extends StatefulWidget {

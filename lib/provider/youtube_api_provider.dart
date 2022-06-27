@@ -2,8 +2,8 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
-import 'package:flutterandroidappforwordpress/model/Youtube%20Model/playlist_iteam_model.dart';
-import 'package:flutterandroidappforwordpress/model/Youtube%20Model/youtube_playlist_model.dart';
+import 'package:flutterandroidappforwordpress/models/Youtube%20Model/playlist_iteam_model.dart';
+import 'package:flutterandroidappforwordpress/models/Youtube%20Model/youtube_playlist_model.dart';
 import 'package:youtube_player_iframe/youtube_player_iframe.dart';
 
 class YoutubeApiprovider extends ChangeNotifier {

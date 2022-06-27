@@ -3,31 +3,24 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter_html/flutter_html.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:url_launcher/url_launcher.dart';
-
 import 'package:share/share.dart';
-
 import 'package:google_fonts/google_fonts.dart';
-import 'package:flutterandroidappforwordpress/Provider/otherprovider.dart';
-import 'package:flutterandroidappforwordpress/Provider/post_provider.dart';
-import 'package:flutterandroidappforwordpress/helper/utils.dart';
-import 'package:flutterandroidappforwordpress/model/post_model.dart';
+import 'package:flutterandroidappforwordpress/provider/post_provider.dart';
+import 'package:flutterandroidappforwordpress/utils/utils.dart';
+import 'package:flutterandroidappforwordpress/models/post_model.dart';
 import 'package:flutterandroidappforwordpress/web_View/web_view.dart';
 
 class PostDetailsPage extends StatefulWidget {
   final String categoryname;
   final int categoryid;
   final Postdata postdata;
-  final String sitename;
 
   const PostDetailsPage(
       {Key? key,
       required this.postdata,
       required this.categoryname,
-      required this.categoryid,
-      required this.sitename})
+      required this.categoryid})
       : super(key: key);
 
   @override

@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:flutterandroidappforwordpress/Provider/post_provider.dart';
+import 'package:flutterandroidappforwordpress/provider/post_provider.dart';
 import 'package:flutterandroidappforwordpress/pages/search_post_details.dart';
 
 class SearchPage extends StatefulWidget {
-  final String sitename;
-  const SearchPage({Key? key, required this.sitename}) : super(key: key);
+  const SearchPage({Key? key}) : super(key: key);
 
   @override
   _SearchPageState createState() => _SearchPageState();
@@ -19,7 +18,7 @@ class _SearchPageState extends State<SearchPage> {
       appBar: AppBar(
         title: TextFormField(
           onChanged: (value) {
-            searchpost.getsearchpost(value, widget.sitename);
+            searchpost.getsearchpost(value);
           },
           decoration: const InputDecoration(
             contentPadding: EdgeInsets.fromLTRB(0, 15, 10, 10),
@@ -43,7 +42,7 @@ class _SearchPageState extends State<SearchPage> {
                     borderRadius: BorderRadius.circular(5)),
                 onTap: () {
                   Provider.of<Postprovider>(context, listen: false)
-                      .getsearchpostdetails(searchpost.searchpost[index].id, widget.sitename);
+                      .getsearchpostdetails(searchpost.searchpost[index].id);
                   Navigator.push(
                     context,
                     MaterialPageRoute(

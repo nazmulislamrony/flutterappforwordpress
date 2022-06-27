@@ -6,12 +6,12 @@ import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:http/http.dart' as http;
-import 'package:flutterandroidappforwordpress/model/Latest_Post_Model/latest_post.dart';
-import 'package:flutterandroidappforwordpress/model/Latest_Post_Model/latest_post_details_model.dart';
-import 'package:flutterandroidappforwordpress/model/post_details_model.dart';
-import 'package:flutterandroidappforwordpress/model/post_model.dart';
-import 'package:flutterandroidappforwordpress/model/search_post_model.dart';
-import 'package:flutterandroidappforwordpress/model/searchpost_details_model.dart';
+import 'package:flutterandroidappforwordpress/models/Latest_Post_Model/latest_post.dart';
+import 'package:flutterandroidappforwordpress/models/Latest_Post_Model/latest_post_details_model.dart';
+import 'package:flutterandroidappforwordpress/models/post_details_model.dart';
+import 'package:flutterandroidappforwordpress/models/post_model.dart';
+import 'package:flutterandroidappforwordpress/models/search_post_model.dart';
+import 'package:flutterandroidappforwordpress/models/searchpost_details_model.dart';
 
 class Postprovider extends ChangeNotifier {
   bool isloading = false;
@@ -28,8 +28,8 @@ class Postprovider extends ChangeNotifier {
   PostDetails? postDetails;
   SearchPostDetails? searchPostDetails;
 
-  Future getpost(int subcategoryid, int perpage, String sitename) async {
-    if (sitename == 'voltagelab') {
+  Future getpost(int subcategoryid, int perpage) async {
+
       isloading = true;
       String url =
           "https://voltagelab.com/wp-json/wp/v2/posts?categories=${subcategoryid}&_fields[]=id&per_page=${perpage}&_fields[]=title&_fields[]=yoast_head_json.og_image&_fields[]=";
@@ -42,9 +42,6 @@ class Postprovider extends ChangeNotifier {
         notifyListeners();
         return postdata;
       }
-    } else if (sitename == 'polytechnicbd') {
-      get_en_voltagelabpost(subcategoryid, perpage);
-    }
   }
 
   loadingmoredata(bool _loading) {
@@ -55,8 +52,7 @@ class Postprovider extends ChangeNotifier {
 
 
   //bangla voltage lab post details................................................
-  Future<PostDetails?> getpostdetails(int postid, String sitename) async {
-    if (sitename == 'voltagelab') {
+  Future<PostDetails?> getpostdetails(int postid) async {
       isloading = true;
       String url =
           "https://voltagelab.com/wp-json/wp/v2/posts/${postid}?_fields[]=content&_fields[]=link";
@@ -68,10 +64,6 @@ class Postprovider extends ChangeNotifier {
         notifyListeners();
         return postDetails;
       }
-    } else if (sitename == 'polytechnicbd') {
-      print("bdcsabdh${sitename}");
-      await get_en_voltagelabpostdetails(postid);
-    }
   }
 
   //bangla voltagelab fast post details...............................................................
@@ -89,8 +81,7 @@ class Postprovider extends ChangeNotifier {
 
   //bangla voltagelab search post................................................
   Future<List<SearchPost>?> getsearchpost(
-      String keyword, String sitename) async {
-    if (sitename == 'voltagelab') {
+      String keyword) async {
       String url =
           "https://voltagelab.com/wp-json/wp/v2/search?search=${keyword}&_fields[]=id&_fields[]=title";
 
@@ -101,16 +92,13 @@ class Postprovider extends ChangeNotifier {
         notifyListeners();
         return searchpost;
       }
-    } else if (sitename == 'polytechnicbd') {
-      await en_voltagelabsearchpost(keyword);
-    }
+
   }
 
   //bangla voltagelab search post details................................................
 
   Future<SearchPostDetails?> getsearchpostdetails(
-      int postid, String sitename) async {
-    if (sitename == 'voltagelab') {
+      int postid) async {
       searchpostloading = true;
       String url =
           "https://voltagelab.com/wp-json/wp/v2/posts/${postid}?_fields[]=id&per_page=1&_fields[]=title&_fields[]=content&_fields[]=yoast_head_json.og_image&_fields[]=link&_fields[]=";
@@ -122,9 +110,6 @@ class Postprovider extends ChangeNotifier {
         notifyListeners();
         return searchPostDetails;
       }
-    } else if (sitename == 'polytechnicbd') {
-      await en_voltagelabsearchpostdetails(postid);
-    }
   }
 
   //bangla voltagelab Latest post................................................

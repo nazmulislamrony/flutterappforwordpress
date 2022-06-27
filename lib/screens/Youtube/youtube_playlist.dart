@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:flutterandroidappforwordpress/Provider/youtube_api_provider.dart';
-import 'package:flutterandroidappforwordpress/Screen/Youtube/playlist_iteam.dart';
-import 'package:flutterandroidappforwordpress/helper/utils.dart';
+import 'package:flutterandroidappforwordpress/provider/youtube_api_provider.dart';
+import 'package:flutterandroidappforwordpress/screens/Youtube/playlist_iteam.dart';
+import 'package:flutterandroidappforwordpress/utils/utils.dart';
 
 class YoutubePlaylistPage extends StatefulWidget {
   const YoutubePlaylistPage({Key? key}) : super(key: key);

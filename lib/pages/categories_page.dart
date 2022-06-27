@@ -2,19 +2,18 @@
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:flutterandroidappforwordpress/Provider/category_provider.dart';
-import 'package:flutterandroidappforwordpress/helper/utils.dart';
+import 'package:flutterandroidappforwordpress/provider/category_provider.dart';
+import 'package:flutterandroidappforwordpress/utils/utils.dart';
 import 'package:flutterandroidappforwordpress/pages/post_page.dart';
 
 class CategoryPage extends StatefulWidget {
   final int categoryid;
   final String categoryname;
-  final String sitename;
+
   const CategoryPage({
     Key? key,
     required this.categoryid,
     required this.categoryname,
-    required this.sitename,
   }) : super(key: key);
 
   @override
@@ -35,9 +34,7 @@ class _CategoryPageState extends State<CategoryPage> {
     final category = Provider.of<CategoryProvider>(context);
     return category.subcategory!.isEmpty
         ? PostPage(
-            sitename: widget.sitename,
-            categoryid: widget.categoryid,
-            categoryname: widget.categoryname)
+            categoryid: widget.categoryid, categoryname: widget.categoryname)
         : Scaffold(
             appBar: AppBar(
               elevation: 0,
@@ -77,7 +74,6 @@ class _CategoryPageState extends State<CategoryPage> {
                                           context,
                                           MaterialPageRoute(
                                               builder: (context) => PostPage(
-                                                  sitename: widget.sitename,
                                                   categoryid: category
                                                       .subcategory![index].id!,
                                                   categoryname: category

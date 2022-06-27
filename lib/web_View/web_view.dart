@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:flutterandroidappforwordpress/Provider/webview_provider.dart';
+import 'package:flutterandroidappforwordpress/provider/webview_provider.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class WebViewPage extends StatefulWidget {

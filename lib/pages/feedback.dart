@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:flutterandroidappforwordpress/helper/utils.dart';
+import 'package:flutterandroidappforwordpress/utils/utils.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mailer/mailer.dart';
@@ -31,14 +31,13 @@ class _FeedBackPageState extends State<FeedBackPage> {
   IconData? _selectedIcon;
 
   Future feedbacksend() async {
-    String host = 'voltagelab.com';
-
-    String name = '[APP]Voltage Lab';
+    String host = Utils.hostName;
+    String name = Utils.nameShowInMail;
     bool ignoreBadCertificate = false;
     bool ssl = false;
     bool allowInsecure = false;
-    String username = 'otp@voltagelab.com';
-    String password = 'mindofEYE@1';
+    String username = Utils.smtpUsername;
+    String password = Utils.smtpPassword;
 
     final smtpServer = SmtpServer(
       host,
@@ -52,19 +51,15 @@ class _FeedBackPageState extends State<FeedBackPage> {
     );
     final message = Message()
       ..from = Address(username, name)
-      ..recipients.add("vlappfeedback@gmail.com")
-      ..subject = 'FeedBack'
+      ..recipients.add(Utils.recipientsMail)
+      ..subject = Utils.recipientsSubject
       ..text = "Rating: $_rating\nFeedback Message: $feedbacktext";
 
     try {
-      final sendReport = await send(message, smtpServer);
-      print('Message sent: ' + sendReport.toString());
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text("FeedBack send successfull")));
     } on MailerException catch (e) {
-      print('Message not sent.');
       for (var p in e.problems) {
-        print('Problem: ${p.code}: ${p.msg}');
       }
     }
   }
@@ -164,12 +159,12 @@ class _FeedBackPageState extends State<FeedBackPage> {
               onPressed: () {
                 validationchack(context);
               },
+              color: Colors.blueAccent,
               child: Text(
                 "Send FeedBack",
                 style: GoogleFonts.lato(
                     color: Colors.white, fontWeight: FontWeight.w600),
               ),
-              color: Colors.blueAccent,
             )
           ],
         ),
