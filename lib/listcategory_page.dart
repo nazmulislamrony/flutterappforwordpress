@@ -3,8 +3,6 @@ import 'dart:math';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutterandroidappforwordpress/latestpost_details.dart';
 import 'package:flutterandroidappforwordpress/navdrawerwidget.dart';
 import 'package:provider/provider.dart';
@@ -58,7 +56,7 @@ class _ListcategoryPageState extends State<ListcategoryPage> {
 
   Widget _latestPostCarousel(Postprovider post) {
     return SliverToBoxAdapter(
-      child: post.voltagelablatestpost.isEmpty
+      child: post.latestpost.isEmpty
           ? SizedBox(
               height: MediaQuery.of(context).size.height * 0.08,
               child: const Center(
@@ -68,9 +66,9 @@ class _ListcategoryPageState extends State<ListcategoryPage> {
           : SizedBox(
               height: MediaQuery.of(context).size.height * 0.08,
               child: CarouselSlider.builder(
-                  itemCount: post.voltagelablatestpost.length,
+                  itemCount: post.latestpost.length,
                   itemBuilder: (context, index, realIndex) {
-                    var latestpost = post.voltagelablatestpost[index];
+                    var latestpost = post.latestpost[index];
                     return InkWell(
                       onTap: () {
                         Navigator.push(

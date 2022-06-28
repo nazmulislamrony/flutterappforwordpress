@@ -1,7 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:provider/provider.dart';
 import 'package:share/share.dart';
@@ -28,7 +26,6 @@ class PostDetailsPage extends StatefulWidget {
 }
 
 class _PostDetailsPageState extends State<PostDetailsPage> {
-
   @override
   void initState() {
     super.initState();
@@ -122,28 +119,34 @@ class _PostDetailsPageState extends State<PostDetailsPage> {
                       },
                       style: {
                         "p": Style(
-                            fontSize: FontSize(18),
-                            fontFamily: 'Lato-Regular',
-                            lineHeight: LineHeight(2)),
+                            fontSize: const FontSize(16),
+                            fontFamily: Utils.defaultFont,
+                            lineHeight: const LineHeight(2)),
                         "li": Style(
-                            fontSize: FontSize(18),
-                            fontFamily: 'Lato-Regular',
-                            lineHeight: LineHeight(1.8)),
-                        // "alt": Style(fontSize: FontSize(textsize.textsize), fontFamily: 'SolaimanLipi'),
+                            fontSize: const FontSize(16),
+                            fontFamily: Utils.defaultFont,
+                            lineHeight: const LineHeight(1.8)),
                         "strong": Style(
-                            fontSize: FontSize(18), fontFamily: 'Lato-Regular'),
+                            fontSize: const FontSize(18),
+                            fontFamily: Utils.defaultFont),
                         "h1": Style(
-                            fontSize: FontSize(24), fontFamily: 'Lato-Regular'),
+                            fontSize: const FontSize(24),
+                            fontFamily: Utils.defaultFont),
                         "h2": Style(
-                            fontSize: FontSize(22), fontFamily: 'Lato-Regular'),
+                            fontSize: const FontSize(22),
+                            fontFamily: Utils.defaultFont),
                         "h3": Style(
-                            fontSize: FontSize(18), fontFamily: 'Lato-Regular'),
+                            fontSize: const FontSize(18),
+                            fontFamily: Utils.defaultFont),
                         "h4": Style(
-                            fontSize: FontSize(16), fontFamily: 'Lato-Regular'),
+                            fontSize: const FontSize(16),
+                            fontFamily: Utils.defaultFont),
                         "h5": Style(
-                            fontSize: FontSize(12), fontFamily: 'Lato-Regular'),
+                            fontSize: const FontSize(12),
+                            fontFamily: Utils.defaultFont),
                         "h6": Style(
-                            fontSize: FontSize(10), fontFamily: 'Lato-Regular')
+                            fontSize: const FontSize(10),
+                            fontFamily: Utils.defaultFont)
                       },
                     ),
                   ),
@@ -160,5 +163,4 @@ class _PostDetailsPageState extends State<PostDetailsPage> {
         subject: "Voltage Lab",
         sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size);
   }
-
 }

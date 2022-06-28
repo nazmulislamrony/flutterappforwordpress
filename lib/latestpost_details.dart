@@ -30,7 +30,7 @@ class _LatestPostDetailsState extends State<LatestPostDetails> {
     final String text = link;
     final RenderBox box = context.findRenderObject() as RenderBox;
     await Share.share(text,
-        subject: "Voltage Lab",
+        subject: Utils.articleShareSubject,
         sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size);
   }
 
@@ -44,8 +44,6 @@ class _LatestPostDetailsState extends State<LatestPostDetails> {
   @override
   Widget build(BuildContext context) {
     final post = Provider.of<Postprovider>(context);
-    double expanded_heigth = 300;
-    double round_container_heigth = 50;
     return Scaffold(
       body: CustomScrollView(
         slivers: [
@@ -54,7 +52,6 @@ class _LatestPostDetailsState extends State<LatestPostDetails> {
             backgroundColor: Colors.white,
             iconTheme: const IconThemeData(color: Colors.black),
             title: Text(
-              // widget.latestposttitle,
               widget.latestposttitle,
               style: Utils.entitleCarosal,
             ),
@@ -66,11 +63,6 @@ class _LatestPostDetailsState extends State<LatestPostDetails> {
                   icon: const Icon(Icons.share)),
             ],
           ),
-          //       SliverPersistentHeader(
-          // delegate: DetailsSliverdelegate(
-          //     expendedheigth: expanded_heigth,
-          //     photourl: widget.latestpostpic,
-          //     round_container: round_container_heigth)),
           SliverToBoxAdapter(
             child: Container(
               margin: const EdgeInsets.all(10),
@@ -91,9 +83,8 @@ class _LatestPostDetailsState extends State<LatestPostDetails> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Flexible(
-                    child: Text(
-                      widget.latestposttitle,
-                      style:   Utils.postListAppbarText),
+                    child: Text(widget.latestposttitle,
+                        style: Utils.postListAppbarText),
                   ),
                 ],
               ),
@@ -107,7 +98,7 @@ class _LatestPostDetailsState extends State<LatestPostDetails> {
           ),
           SliverToBoxAdapter(
             child: SingleChildScrollView(
-              physics: BouncingScrollPhysics(),
+              physics: const BouncingScrollPhysics(),
               child: post.latestPostdetails == null
                   ? SizedBox(
                       height: 300,
@@ -129,31 +120,35 @@ class _LatestPostDetailsState extends State<LatestPostDetails> {
                         CachedNetworkImage(imageUrl: url!);
                       },
                       style: {
-                        // "p": Style(fontSize: FontSize(textsize.textsize), fontFamily: 'SolaimanLipi', letterSpacing: 1.0),
-
                         "p": Style(
-                            fontSize: FontSize(18),
-                            fontFamily: 'Lato-Regular',
-                            lineHeight: LineHeight(2)),
+                            fontSize: const FontSize(16),
+                            fontFamily: Utils.defaultFont,
+                            lineHeight: const LineHeight(2)),
                         "li": Style(
-                            fontSize: FontSize(18),
-                            fontFamily: 'Lato-Regular',
-                            ),
-                        // "alt": Style(fontSize: FontSize(textsize.textsize), fontFamily: 'SolaimanLipi'),
+                            fontSize: const FontSize(16),
+                            fontFamily: Utils.defaultFont,
+                            lineHeight: const LineHeight(1.8)),
                         "strong": Style(
-                            fontSize: FontSize(18), fontFamily: 'Lato-Regular'),
+                            fontSize: const FontSize(18),
+                            fontFamily: Utils.defaultFont),
                         "h1": Style(
-                            fontSize: FontSize(24), fontFamily: 'Lato-Regular'),
+                            fontSize: const FontSize(24),
+                            fontFamily: Utils.defaultFont),
                         "h2": Style(
-                            fontSize: FontSize(22), fontFamily: 'Lato-Regular'),
+                            fontSize: const FontSize(22),
+                            fontFamily: Utils.defaultFont),
                         "h3": Style(
-                            fontSize: FontSize(18), fontFamily: 'Lato-Regular'),
+                            fontSize: const FontSize(18),
+                            fontFamily: Utils.defaultFont),
                         "h4": Style(
-                            fontSize: FontSize(16), fontFamily: 'Lato-Regular'),
+                            fontSize: const FontSize(16),
+                            fontFamily: Utils.defaultFont),
                         "h5": Style(
-                            fontSize: FontSize(12), fontFamily: 'Lato-Regular'),
+                            fontSize: const FontSize(12),
+                            fontFamily: Utils.defaultFont),
                         "h6": Style(
-                            fontSize: FontSize(10), fontFamily: 'Lato-Regular')
+                            fontSize: const FontSize(10),
+                            fontFamily: Utils.defaultFont)
                       },
                     ),
             ),
@@ -180,12 +175,6 @@ class DetailsSliverdelegate extends SliverPersistentHeaderDelegate {
     return Scaffold(
       body: Stack(
         children: [
-          // Image.network(
-          //   photourl,
-          //   width: MediaQuery.of(context).size.width,
-          //   height: expendedheigth,
-          //   fit: BoxFit.cover,
-          // ),
           CachedNetworkImage(
             key: UniqueKey(),
             imageUrl: photourl,

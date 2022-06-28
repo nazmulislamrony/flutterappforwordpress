@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutterandroidappforwordpress/utils/utils.dart';
 import 'package:http/http.dart' as http;
-import 'package:flutterandroidappforwordpress/models/Voltage_Lab/category_model.dart';
+import 'package:flutterandroidappforwordpress/models/category_model.dart';
 import 'package:flutterandroidappforwordpress/models/subcategory.dart';
 
 

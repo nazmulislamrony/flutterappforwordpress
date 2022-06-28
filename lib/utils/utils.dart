@@ -19,15 +19,17 @@ class Utils {
   static const fbFallBackUrl ='https://www.facebook.com/voltagelabbd';
   static const playtoreUrl ='https://play.google.com/store/apps/details?id=org.voltagelab';
 
+  static const yourContactMail = "voltagelabbd@gmail.com";
+  static const articleShareSubject = "Voltage Lab";
   //SMTP server feedback
-  static const hostName = 'voltagelab.com'; // mail server hostname
-  static const nameShowInMail = '[APP]Voltage Lab'; // mail server hostname
+  static const hostName = ''; // site.com - mail server hostname
+  static const nameShowInMail = ''; // [APP]Voltage Lab -  mail server hostname
   static const smtpUsername = ''; // put smtp username
   static const smtpPassword = ''; // put smtp password
   // recipients info
   static const recipientsMail = ''; // your mail where user email will be send
   static const recipientsSubject = ''; // your mail where user email will be send
-
+  static const defaultFont = 'Lato-Regular'; // your mail where user email will be send
 
 
 

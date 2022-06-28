@@ -6,6 +6,7 @@ import 'package:webview_flutter/webview_flutter.dart';
 
 class WebViewPage extends StatefulWidget {
   final String url;
+
   const WebViewPage({Key? key, required this.url}) : super(key: key);
 
   @override
@@ -15,6 +16,7 @@ class WebViewPage extends StatefulWidget {
 class _WebViewPageState extends State<WebViewPage> {
   final Completer<WebViewController> _controller =
       Completer<WebViewController>();
+
   @override
   Widget build(BuildContext context) {
     final providerdata = Provider.of<Webcontroll>(context);
@@ -57,12 +59,6 @@ class _WebViewPageState extends State<WebViewPage> {
               debuggingEnabled: true,
               onProgress: (int progress) {
                 providerdata.linearpogress(progress.toDouble() / 100);
-              },
-              onPageStarted: (String url) {
-                print('Page started loading: $url');
-              },
-              onPageFinished: (String url) {
-                print('Page finished loading: $url');
               },
             ),
           ),

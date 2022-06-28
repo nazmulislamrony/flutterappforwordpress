@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -76,7 +75,7 @@ class _ContactFormState extends State<ContactForm> {
                   if (controllerSubject.text.isNotEmpty &&
                       controllerMessage.text.isNotEmpty) {
                     _openMailLauncher(
-                        toEmil: "voltagelabbd@gmail.com",
+                        toEmil: Utils.yourContactMail,
                         toSubject: controllerSubject.text,
                         message: controllerMessage.text);
                   }
@@ -112,27 +111,26 @@ class _ContactFormState extends State<ContactForm> {
                     ),
                   ],
                 )),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Column(
               children: [
                 Container(
-                    child: Container(
-                        margin: EdgeInsets.only(top: 10),
-                        width: double.infinity,
-                        alignment: Alignment.center,
-                        child: Text(
-                          "Or Whatsapp Live Chat!!!",
-                          style: Utils.categoryTitleText,
-                        ))),
+                    margin: const EdgeInsets.only(top: 10),
+                    width: double.infinity,
+                    alignment: Alignment.center,
+                    child: Text(
+                      "Or Whatsapp Live Chat!!!",
+                      style: Utils.categoryTitleText,
+                    )),
               ],
             ),
             const SizedBox(
               height: 20,
             ),
             Container(
-              margin: EdgeInsets.only(left: 100, right: 100),
+              margin: const EdgeInsets.only(left: 100, right: 100),
               // color: Colors.green,
               width: 200,
               height: 50,
@@ -193,7 +191,7 @@ class _ContactFormState extends State<ContactForm> {
           controller: controller,
           maxLines: maxLine,
           decoration: InputDecoration(
-              border: OutlineInputBorder(),
+              border: const OutlineInputBorder(),
               errorText: validateTxt ? 'Value Can\'t be Empty' : null),
         )
       ],
@@ -212,8 +210,7 @@ Future _openMailLauncher(
 
 openwhatsapp() async {
   var whatsapp = Utils.contactNumber;
-  var whatsappURlAndroid = "whatsapp://send?phone=" +
-      whatsapp +
-      "&text=[From: ${Utils.fromWhere}]\n\n";
+  var whatsappURlAndroid =
+      "whatsapp://send?phone=$whatsapp&text=[From: ${Utils.fromWhere}]\n\n";
   await canLaunchUrl(Uri.parse(whatsappURlAndroid));
 }

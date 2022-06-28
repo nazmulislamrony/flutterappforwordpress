@@ -9,6 +9,8 @@ import 'package:provider/provider.dart';
 class SplashScreen extends StatefulWidget {
   static String name = "SplashScreenPage2";
 
+  const SplashScreen({Key? key}) : super(key: key);
+
   @override
   State<StatefulWidget> createState() {
     return SplashScreenState();
@@ -23,7 +25,7 @@ class SplashScreenState extends State<SplashScreen> {
   }
 
   Future<Timer> loadData() async {
-    Provider.of<Postprovider>(context, listen: false).getvoltagelablatestpost();
+    Provider.of<Postprovider>(context, listen: false).getlatestpost();
     Provider.of<CategoryProvider>(context, listen: false)
         .getCategory();
     return Timer(const Duration(seconds: 3), onDoneLoading);
@@ -63,11 +65,11 @@ class SplashScreenState extends State<SplashScreen> {
                     fontSize: 35,
                     fontWeight: FontWeight.bold),
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
+              const Padding(
+                padding: EdgeInsets.all(8.0),
+                child: SizedBox(
                   width: 150,
-                  child: const LinearProgressIndicator(
+                  child: LinearProgressIndicator(
                     minHeight: 10,
                     backgroundColor: Colors.black,
                     valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
