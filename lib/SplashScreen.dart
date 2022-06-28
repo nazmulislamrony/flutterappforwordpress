@@ -58,7 +58,7 @@ class SplashScreenState extends State<SplashScreen> {
                 scale: 3,
               ),
               const Text(
-                Utils.appame,
+                Utils.appName,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                     color: Colors.black,

@@ -6,10 +6,7 @@ class Webcontroll extends ChangeNotifier {
 
   double linerProgress = 0.0;
 
-
   double get lineprogress => linerProgress;
-
-
 
   void loadurlweb(String url) {
     webViewController!.loadUrl(url);

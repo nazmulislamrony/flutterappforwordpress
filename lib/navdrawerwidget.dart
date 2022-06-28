@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterandroidappforwordpress/drawerhelper.dart';
 import 'package:flutterandroidappforwordpress/listcategory_page.dart';
@@ -17,8 +16,6 @@ class NavigationDrawerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const padding = EdgeInsets.symmetric(horizontal: 10);
-    String imgloc = 'images/category_icon.png';
-    String nameApp = 'WordPress in Flutter';
 
     return Drawer(
       child: Material(
@@ -26,7 +23,10 @@ class NavigationDrawerWidget extends StatelessWidget {
         child: ListView(
           padding: padding,
           children: [
-            buildHeader(contxt: context, name: nameApp, images: imgloc),
+            buildHeader(
+                contxt: context,
+                name: Utils.appName,
+                images: Utils.categoryicon),
             const SizedBox(
               height: 10.0,
             ),
@@ -63,21 +63,15 @@ class NavigationDrawerWidget extends StatelessWidget {
             const SizedBox(
               height: 10.0,
             ),
-
             buildMenuItem(
               text: 'Contact Us',
               icon: Icons.contact_mail,
               onClicked: () => selectedItem(context, 4),
             ),
-
             const SizedBox(
               height: 60.0,
             ),
             dividerContainer(),
-            // Divider(
-            //   color: DrawerHelper.defaultColor,
-            // ),
-
             buildMenuItem(
               text: 'Share',
               icon: Icons.share,
@@ -99,7 +93,7 @@ class NavigationDrawerWidget extends StatelessWidget {
 
   Widget buildMenuItem(
       {required String text, required IconData icon, VoidCallback? onClicked}) {
-    final hoverColor = Colors.blueAccent;
+    const hoverColor = Colors.blueAccent;
     return ListTile(
       leading: Icon(
         icon,
@@ -141,11 +135,11 @@ class NavigationDrawerWidget extends StatelessWidget {
         ));
         break;
       case 5:
-        Share.share(Utils.playtoreUrl, subject: Utils.appame);
+        Share.share(Utils.playtoreUrl, subject: Utils.appName);
         break;
       case 6:
-        Navigator.of(context)
-            .push(MaterialPageRoute(builder: (context) => const FeedBackPage()));
+        Navigator.of(context).push(
+            MaterialPageRoute(builder: (context) => const FeedBackPage()));
         break;
     }
   }
@@ -156,32 +150,30 @@ class NavigationDrawerWidget extends StatelessWidget {
     required String name,
   }) {
     return Container(
-        margin: EdgeInsets.only(top: 30, left: 30),
+        margin: const EdgeInsets.only(top: 30, left: 30),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              child: Column(
-                children: [
-                  Image.asset(
-                    images,
-                    height: 50,
-                    fit: BoxFit.fill,
-                    width: 70,
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Text(name,
-                      // style: GoogleFonts.openSans()
-                      style: GoogleFonts.balsamiqSans(
-                          textStyle: Theme.of(contxt).textTheme.headline6,
-                          color: Colors.black87,
-                          fontSize: 23,
-                          fontWeight: FontWeight.bold))
-                ],
-              ),
+            Column(
+              children: [
+                Image.asset(
+                  images,
+                  height: 50,
+                  fit: BoxFit.fill,
+                  width: 70,
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Text(name,
+                    // style: GoogleFonts.openSans()
+                    style: GoogleFonts.balsamiqSans(
+                        textStyle: Theme.of(contxt).textTheme.headline6,
+                        color: Colors.black87,
+                        fontSize: 23,
+                        fontWeight: FontWeight.bold))
+              ],
             ),
           ],
         ));
@@ -190,7 +182,7 @@ class NavigationDrawerWidget extends StatelessWidget {
   Widget dividerContainer() {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 15),
-      child: Divider(
+      child: const Divider(
         color: DrawerHelper.defaultColor,
       ),
     );
@@ -218,12 +210,10 @@ class NavigationDrawerWidget extends StatelessWidget {
   }
 
   _launchURL(String url) async {
-
     Uri urlLink = Uri.parse(url);
     if (await launchUrl(urlLink)) {
       await launchUrl(urlLink);
-    }
-    else {
+    } else {
       throw 'Could not launch $urlLink';
     }
   }

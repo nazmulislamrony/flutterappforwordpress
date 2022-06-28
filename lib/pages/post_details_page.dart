@@ -160,7 +160,7 @@ class _PostDetailsPageState extends State<PostDetailsPage> {
     final String text = link;
     final RenderBox box = context.findRenderObject() as RenderBox;
     await Share.share(text,
-        subject: "Voltage Lab",
+        subject: Utils.postShareSubject,
         sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size);
   }
 }

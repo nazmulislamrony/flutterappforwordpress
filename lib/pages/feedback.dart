@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_typing_uninitialized_variables, unused_field, prefer_final_fields, prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutterandroidappforwordpress/utils/utils.dart';
@@ -17,18 +15,9 @@ class FeedBackPage extends StatefulWidget {
 
 class _FeedBackPageState extends State<FeedBackPage> {
   final _formkey = GlobalKey<FormState>();
-  late final _ratingController;
   late double _rating;
-
   String? feedbacktext;
-
-  double _userRating = 3.0;
-  int _ratingBarMode = 1;
-  double _initialRating = 3.0;
-  bool _isRTLMode = false;
-  bool _isVertical = false;
-
-  IconData? _selectedIcon;
+  final double _initialRating = 3.0;
 
   Future feedbacksend() async {
     String host = Utils.hostName;
@@ -41,7 +30,7 @@ class _FeedBackPageState extends State<FeedBackPage> {
 
     final smtpServer = SmtpServer(
       host,
-      port: 587,
+      port: Utils.port,
       name: name,
       allowInsecure: allowInsecure,
       username: username,
@@ -56,11 +45,11 @@ class _FeedBackPageState extends State<FeedBackPage> {
       ..text = "Rating: $_rating\nFeedback Message: $feedbacktext";
 
     try {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text("FeedBack send successfull")));
+      await send(message, smtpServer);
+      ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text("FeedBack send successful")));
     } on MailerException catch (e) {
-      for (var p in e.problems) {
-      }
+      for (var p in e.problems) {}
     }
   }
 
@@ -72,8 +61,7 @@ class _FeedBackPageState extends State<FeedBackPage> {
         timeInSecForIosWeb: 3,
         backgroundColor: Colors.white,
         textColor: Colors.black,
-        fontSize: 16.0
-    );
+        fontSize: 16.0);
   }
 
   validationchack(BuildContext context) {
@@ -89,7 +77,6 @@ class _FeedBackPageState extends State<FeedBackPage> {
   @override
   void initState() {
     super.initState();
-    _ratingController = TextEditingController(text: '3.0');
     _rating = _initialRating;
   }
 
@@ -99,7 +86,7 @@ class _FeedBackPageState extends State<FeedBackPage> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.white,
-        iconTheme: IconThemeData(
+        iconTheme: const IconThemeData(
           color: Colors.black, //change your color here
         ),
         title: Text(
@@ -118,7 +105,7 @@ class _FeedBackPageState extends State<FeedBackPage> {
                 direction: Axis.horizontal,
                 allowHalfRating: true,
                 itemCount: 5,
-                itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
+                itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
                 itemBuilder: (context, _) => const Icon(
                   Icons.star,
                   color: Colors.amber,
@@ -131,7 +118,10 @@ class _FeedBackPageState extends State<FeedBackPage> {
                 },
               ),
             ),
-            Text("Rating: $_rating", style: GoogleFonts.lato(),),
+            Text(
+              "Rating: $_rating",
+              style: GoogleFonts.lato(),
+            ),
             Form(
               key: _formkey,
               child: Container(
@@ -172,4 +162,3 @@ class _FeedBackPageState extends State<FeedBackPage> {
     );
   }
 }
-

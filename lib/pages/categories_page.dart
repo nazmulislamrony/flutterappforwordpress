@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_is_empty
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutterandroidappforwordpress/provider/category_provider.dart';

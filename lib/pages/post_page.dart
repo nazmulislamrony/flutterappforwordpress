@@ -1,7 +1,6 @@
 // ignore_for_file: avoid_print
 
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lazy_load_scrollview/lazy_load_scrollview.dart';
 import 'package:provider/provider.dart';
@@ -12,6 +11,7 @@ import 'package:flutterandroidappforwordpress/pages/post_details_page.dart';
 class PostPage extends StatefulWidget {
   final int categoryid;
   final String categoryname;
+
   const PostPage({
     Key? key,
     required this.categoryid,
@@ -71,7 +71,7 @@ class _PostPageState extends State<PostPage> {
           : LazyLoadScrollView(
               onEndOfPage: loadmorepost,
               child: SingleChildScrollView(
-                physics: BouncingScrollPhysics(),
+                physics: const BouncingScrollPhysics(),
                 child: ListView.builder(
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
@@ -96,8 +96,7 @@ class _PostPageState extends State<PostPage> {
                         onTap: () {
                           print(post.postdata[index].id);
                           Provider.of<Postprovider>(context, listen: false)
-                              .getpostdetails(
-                                  post.postdata[index].id!);
+                              .getpostdetails(post.postdata[index].id!);
                           Navigator.push(
                             context,
                             MaterialPageRoute(

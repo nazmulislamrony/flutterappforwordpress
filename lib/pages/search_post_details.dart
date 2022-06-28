@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter_html/flutter_html.dart';
+import 'package:flutterandroidappforwordpress/utils/utils.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -11,9 +12,9 @@ import 'package:share/share.dart';
 import 'package:flutterandroidappforwordpress/provider/post_provider.dart';
 import 'package:flutterandroidappforwordpress/web_View/web_view.dart';
 
-
 class SearchPostDetails extends StatefulWidget {
   final int postid;
+
   const SearchPostDetails({
     Key? key,
     required this.postid,
@@ -30,12 +31,14 @@ class _SearchPostDetailsState extends State<SearchPostDetails> {
     final String text = link;
     final RenderBox box = context.findRenderObject() as RenderBox;
     await Share.share(text,
-        subject: "Voltage Lab",
+        subject: Utils.postShareSubject,
         sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size);
   }
 
   _launchURL(String _url) async {
-    await canLaunch(_url) ? await launch(_url) : throw 'Could not launch $_url';
+    await launchUrl(Uri.parse(_url))
+        ? await launch(_url)
+        : throw 'Could not launch $_url';
   }
 
   @override
